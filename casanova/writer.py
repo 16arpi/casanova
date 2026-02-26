@@ -24,7 +24,11 @@ from casanova.record import (
     infer_fieldnames,
 )
 from casanova.reader import Headers
-from casanova.utils import py310_wrap_csv_writerow, strip_null_bytes_from_row, ensure_open
+from casanova.utils import (
+    py310_wrap_csv_writerow,
+    strip_null_bytes_from_row,
+    ensure_open,
+)
 from casanova.exceptions import InconsistentRowTypesError, InvalidRowTypeError
 
 
@@ -41,7 +45,7 @@ class Writer(object):
         row_len: Optional[int] = None,
         strip_null_bytes_on_write: Optional[bool] = None,
         encoding: str = "utf-8",
-        open_mode: str = 'w',
+        open_mode: str = "w",
         dialect: Optional[AnyCSVDialect] = None,
         delimiter: Optional[str] = None,
         quotechar: Optional[str] = None,
@@ -74,8 +78,6 @@ class Writer(object):
         self.strict = strict and self.row_len is not None
 
         self.resuming = False
-
-
 
         if isinstance(output_file, Resumer):
             # NOTE: basic resumer does not need to know the headers
@@ -195,7 +197,7 @@ class Writer(object):
             self.output_file.close()
         else:
             raise TypeError("no file to close")
-        
+
     def __enter__(self):
         return self
 

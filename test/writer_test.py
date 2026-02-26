@@ -240,7 +240,9 @@ class TestWriter(object):
         buf = StringIO()
         writer = Writer(buf, fieldnames=["test1", "test2"])
 
-        with pytest.raises(NotImplementedError, match="cannot close a file this instance did not open"):
+        with pytest.raises(
+            NotImplementedError, match="cannot close a file this instance did not open"
+        ):
             writer.close()
 
         with Writer(buf, fieldnames=["test1", "test2"]) as writer:
